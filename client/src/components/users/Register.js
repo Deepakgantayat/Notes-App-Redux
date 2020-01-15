@@ -32,7 +32,7 @@ class Register extends React.Component{
                 <div className="col-md-6">
                     <br/>
                     <br/>
-                <img src="https://images-na.ssl-images-amazon.com/images/I/81nia28xsOL._SX425_.jpg" className="rounded mx-auto d-block"  alt="Responsive image"></img>
+                <img src="https://images-na.ssl-images-amazon.com/images/I/81nia28xsOL._SX425_.jpg" className="rounded mx-auto d-block"  alt="Responsive"></img>
                 </div>
                 <div className="col-md-6">
                     <br/>

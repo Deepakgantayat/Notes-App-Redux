@@ -2,7 +2,7 @@ import React from 'react'
 import {connect} from 'react-redux'
 import  _ from 'lodash'
 import {Link} from 'react-router-dom'
-import { Card, Button, CardTitle, CardText, Row, Col } from 'reactstrap';
+import { Card, CardTitle, CardText, Row, Col } from 'reactstrap';
 
  function NoteShow(props){
         console.log(props.note)
@@ -37,7 +37,7 @@ import { Card, Button, CardTitle, CardText, Row, Col } from 'reactstrap';
 
 const mapStateToProps = (state, props) => {
     return {
-        note: state.notes.find(note => note._id == props.match.params.id)
+        note: state.notes.find(note => note._id === props.match.params.id)
     }
 }
 

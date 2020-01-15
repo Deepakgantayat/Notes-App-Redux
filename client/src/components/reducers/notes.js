@@ -11,7 +11,7 @@ const notesReducer = (state = notesInitialState, action) => {
         }
         case 'EDIT_NOTE' : {
             return state.map(note => {
-                if(note._id == action.payload._id){
+                if(note._id === action.payload._id){
                     return {...action.payload}
                 }
                 else{
@@ -20,7 +20,7 @@ const notesReducer = (state = notesInitialState, action) => {
             })
         }
         case 'REMOVE_NOTE':{
-            return state.filter(note => note._id != action.payload) 
+            return state.filter(note => note._id !== action.payload) 
         }
         default: {
             return [...state]

@@ -34,7 +34,7 @@ function CategoryList(props){
                                    <td>{category.name}</td>
                                    <td>
                                    <button className="btn btn-danger"onClick= {() =>{ 
-                                       const confirmRemove = 
+                    
                                        swal({
                                         title: "Are you sure you want to Delete?",
                                         icon: "warning",
