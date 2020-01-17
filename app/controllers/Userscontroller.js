@@ -10,7 +10,6 @@ module.exports.register = (req,res) => {
             res.send(err)
         })
 }
-
 // user login
 module.exports.login = (req,res) => {
     const { email, password } = req.body
@@ -30,7 +29,6 @@ module.exports.login = (req,res) => {
             res.send(err)
         })
 }
-
 // user account
 module.exports.account = (req,res) => {
     const { user } = req
