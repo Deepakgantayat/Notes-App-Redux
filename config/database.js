@@ -2,7 +2,9 @@ const mongoose = require('mongoose')
 
 // db configuration
 const configureDB =  () => {
-    mongoose.connect('mongodb://localhost:27017/aug-notes-app', { useNewUrlParser: true, useUnifiedTopology: true})
+    mongoose.Promise = global.Promise
+    const MONGODB_URI = process.emv.MONGODB_URI || 'mongodb://localhost:27017/aug-notes-app'
+    mongoose.connect(MONGODB_URI, { useNewUrlParser: true, useUnifiedTopology: true})
         .then(() => {
             console.log('Connected to database')
         })
