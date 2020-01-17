@@ -14,7 +14,8 @@ function CategoryList(props){
         props.dispatch(startRemoveCategory(id))
      }     
             return(
-                <div className="row">
+                <div className="container">
+                    <div className="row">
                     
                     <div className="col-md-6">
                     <br/>
@@ -62,10 +63,7 @@ function CategoryList(props){
                  <div className="col-md-6 ">
                  <CategoryForm handleSubmit = {handleSubmit} classes="table group"/> 
                      </div> 
-                      
-            
-
-                    
+                </div>
                 </div>
             )
         }

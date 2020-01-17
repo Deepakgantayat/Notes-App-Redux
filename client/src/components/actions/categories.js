@@ -1,4 +1,5 @@
-import axios from 'axios'
+import axios from "../../config/axios"
+import swal from 'sweetalert'
 
 export const setCategories = (categories) => {
     return {
@@ -9,7 +10,7 @@ export const setCategories = (categories) => {
 
 export const startSetCategories = () => {
     return (dispatch) => {
-        axios.get('http://localhost:3025/categories', {
+        axios.get('/categories', {
             headers: {
                 'x-auth':localStorage.getItem('authToken')
             }
@@ -35,14 +36,14 @@ export const addCategory = (category) =>{
 
 export const startAddCategories = (formData, props) => {
     return (dispatch) => {
-        axios.post('http://localhost:3025/categories', formData,{
+        axios.post('/categories', formData,{
             headers: {
                 'x-auth': localStorage.getItem('authToken')
             }
         })
         .then((response) => {
             if(response.data.hasOwnProperty('errors')){
-                alert(response.data.errors.message)
+                swal("Provide Data")//response.data.errors.message
             }
             else{
                 const category = response.data
@@ -67,7 +68,7 @@ export const removeCategory = (id) => {
 export const startRemoveCategory = (id) => {
     return (dispatch) => {
         //  dispatch(removeCustomer(id))//remove it before confirmation from server may cause propblem
-        axios.delete(`http://localhost:3025/categories/${id}`, {
+        axios.delete(`/categories/${id}`, {
             headers:{
                 'x-auth': localStorage.getItem('authToken')
             }

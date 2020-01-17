@@ -40,7 +40,8 @@ class  NoteList extends React.Component{
                                         <CardTitle><h4>{index+1}:  {note.title?note.title:'NA'}</h4></CardTitle>
                                         
                                         <CardText>Description: {note.body? note.body:'NA'}</CardText>
-                                        <CardText> Category: {note.category.name ? note.category.name :'NA'}</CardText>
+                                        <CardText> Category: { note.category ? note.category.name :'NA' }</CardText>
+                                            {/* note.category ? note.category.name :'NA' */}
                                         <Container className="mt-3">
                                              <Row>
                                                  <Col md="6">

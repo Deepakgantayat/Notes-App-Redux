@@ -1,4 +1,5 @@
-import axios from 'axios'
+import axios from "../../config/axios"
+import swal from 'sweetalert'
 
 export const setNotes = (notes) => {
     return {
@@ -9,7 +10,7 @@ export const setNotes = (notes) => {
 
 export const startSetNotes = () => {
     return (dispatch) => {
-        axios.get('http://localhost:3025/notes', {
+        axios.get('/notes', {
             headers: {
                 'x-auth':localStorage.getItem('authToken')
             }
@@ -34,14 +35,14 @@ export const addNote = (note) =>{
 
 export const startAddNote = (formData, props) => {
     return (dispatch) => {
-        axios.post('http://localhost:3025/notes', formData,{
+        axios.post('/notes', formData,{
             headers: {
                 'x-auth': localStorage.getItem('authToken')
             }
         })
         .then((response) => {
             if(response.data.hasOwnProperty('errors')){
-                alert(response.data.errors.message)
+                swal("fill all the field")//response.data.errors.message
             }
             else{
                 const note = response.data
@@ -65,14 +66,14 @@ export const editNote = (note) =>{
 
 export const startEditNote = (formData,props) => {
     return (dispatch) => {
-        axios.put(`http://localhost:3025/notes/${props.match.params.id}`, formData,{
+        axios.put(`/notes/${props.match.params.id}`, formData,{
             headers: {
                 'x-auth': localStorage.getItem('authToken')
             }
         })
         .then((response) => {
-            if(response.data.hasOwnProperty('errors')){
-                alert(response.data.errors.message)
+            if(response.data.hasOwnProperty('reason')){
+                swal("please provide data")//response.data.errors.message
             }
             else{
                 const note = response.data
@@ -96,7 +97,7 @@ export const removeNote = (id) => {
 export const startRemoveNote = (id) => {
     return (dispatch) => {
         //  dispatch(removeCustomer(id))//remove it before confirmation from server may cause propblem
-        axios.delete(`http://localhost:3025/notes/${id}`, {
+        axios.delete(`/notes/${id}`, {
             headers:{
                 'x-auth': localStorage.getItem('authToken')
             }

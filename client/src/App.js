@@ -42,7 +42,7 @@ function App(props) {
     
     <div className = "container-fluid">
     <nav className="navbar"style={{ backgroundColor: '#999' }} >
-    <a className="navbar-brand "  style={{textAlign:"end", color:"black"}}>NOTES APP</a>
+    <a href="#" className="navbar-brand " style={{textAlign:"end", color:"black"}}>NOTES APP</a>
       <ul className="nav justify-content-end">
   
         <li className="nav-item active " ><Link to = "/" className="nav-link"  style={{textAlign:"end", color:"black"}}>Home</Link></li>

@@ -1,4 +1,4 @@
-import axios from 'axios'
+import axios from "../../config/axios"
 import {setNotes} from './notes'
 import {setCategories} from './categories'
 import swal from 'sweetalert'
@@ -12,7 +12,7 @@ export const setUser = (user = {}) => {
 
 export const startResgisterUser =(formData, props)=>{
     return (dispatch) => {
-        axios.post('http://localhost:3025/users/register', formData)
+        axios.post('/users/register', formData)
             .then((response) => {
                 const data =response.data
                 if(data.hasOwnProperty('errors')){
@@ -34,27 +34,27 @@ export const startResgisterUser =(formData, props)=>{
 
 export const startLoginUser = (formData, props) => {
     return (dispatch) => {
-        axios.post('http://localhost:3025/users/login', formData)
+        axios.post('/users/login', formData)
             .then((response) => {
-                console.log(response.data)
+                swal(response.data)
                 if(!response.data.token){
-                    swal(response.data)
+                    console.log(response.data)
                 }
                 else{
-                    console.log(response.data)
+                   swal(response.data)
                     const token = response.data.token
                     localStorage.setItem('authToken', token)
                     swal('Succssfully logged in')
 
-                    Promise.all([axios.get('http://localhost:3025/users/account',{
+                    Promise.all([axios.get('/users/account',{
                         header: {
                             'x-auth' : token
                         }
-                    }), axios.get('http://localhost:3025/notes', {
+                    }), axios.get('/notes', {
                         headers: {
                             'x-auth' : token
                         }
-                    }),axios.get('http://localhost:3025/categories', {
+                    }),axios.get('/categories', {
                         headers: {
                             'x-auth' : token
                         }
@@ -80,7 +80,7 @@ export const startLoginUser = (formData, props) => {
 
 export const startGetUser = () =>{
     return(dispatch) =>{
-        axios.get('http://localhost:3025/users/account',{
+        axios.get('/users/account',{
             headers: {
                 'x-auth' : localStorage.getItem('authToken')
             }
@@ -94,7 +94,7 @@ export const startGetUser = () =>{
 
 export const startLogoutUser = () => {
     return (dispatch) => {
-        axios.delete('http://localhost:3025/users/logout', {
+        axios.delete('/users/logout', {
             headers: {
               'x-auth': localStorage.getItem('authToken')
             }
