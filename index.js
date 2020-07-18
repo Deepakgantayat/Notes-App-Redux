@@ -12,6 +12,11 @@ app.use(express.json())
 configureDB()
 app.use(cors())
 
+
+app.get('/', (req,res) => {
+    res.send('Welcome to the page')
+})
+
 app.use('/',router)
 
 // app.use(express.static(path.join(__dirname,"client/build"))) 
@@ -20,9 +25,6 @@ app.use('/',router)
 // }) 
 
 // ROute Handlers || Request Handlers
-app.get('/', (req,res) => {
-    res.send('Welcome to the page')
-})
 
 
 
